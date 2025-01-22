@@ -1,7 +1,7 @@
 include: "/views/**/*.view.lkml"
 
 view: extended_monthly_cpi_data {
-  extends: [monthly_cpi_data]
+  extends: [base_monthly_cpi_data]
 
   dimension_group: date {
     type: time

@@ -10,5 +10,3 @@ datagroup: poc_kuwait_default_datagroup {
 }
 
 persist_with: poc_kuwait_default_datagroup
-
-explore: cpi_data {}

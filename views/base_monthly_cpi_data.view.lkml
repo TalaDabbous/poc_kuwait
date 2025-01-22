@@ -1,24 +1,21 @@
-include: "/views/**/*.view.lkml"
-
-view: cpi_data {
-  sql_table_name: `sandbox_poc.cpi_data` ;;
+view: base_monthly_cpi_data {
+  sql_table_name: `the-line-crm-3-0.sandbox_poc.monthly_cpi_data ` ;;
 
   dimension: annual_change_rate_prc {
     type: number
     sql: ${TABLE}.annual_change_rate_prc ;;
-    }
+  }
+  dimension: category {
+    type: string
+    sql: ${TABLE}.category ;;
+  }
   dimension: cpi {
     type: number
     sql: ${TABLE}.cpi ;;
   }
-  dimension: major_groups {
-    type: string
-    sql: ${TABLE}.major_groups ;;
-  }
-  dimension: major_groups_ar {
-    type: string
-    sql: ${TABLE}.major_groups_ar ;;
-    label: "المجموعات الرئيسية"
+  dimension: full_date {
+    type: date
+    sql: ${TABLE} ;;
   }
   dimension: month {
     type: string
@@ -28,14 +25,10 @@ view: cpi_data {
     type: string
     sql: ${TABLE}.month_ar ;;
   }
- dimension: month_year {
-  type: string
-  sql: ${TABLE}.month_year ;;
+  dimension: month_year {
+    type: string
+    sql: ${TABLE}.month_year ;;
   }
-  dimension: full_date {
-    type: date
-    sql: ${TABLE} ;;
-    }
   dimension: month_year_ar {
     type: string
     sql: ${TABLE}.month_year_ar ;;

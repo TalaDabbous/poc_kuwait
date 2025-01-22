@@ -1,7 +1,7 @@
 include: "/views/**/*.view.lkml"
 
 view: extended_cpi_data {
-  extends: [cpi_data]
+  extends: [base_cpi_data]
 
   dimension_group: date {
     type: time
@@ -40,7 +40,21 @@ view: extended_cpi_data {
     END ;;
     value_format: "0.0"
     label: "مؤشر أسعار المستهلك"
-    #drill_fields: [major_groups_ar, all_items, all_items_less_food, all_items_less_housing, previous_year_cpi_avg]
+    drill_fields: [major_groups_ar, extended_sub_major_groups.sub_major_groups_ar, extended_sub_major_groups.sub_cpi_avg]
+  }
+
+  measure: cpi_avg_w_parameter_without_drill {
+    type: average
+    sql:
+    CASE
+      WHEN {% parameter category %} = 'All items' AND ${all_items} = 1 THEN ${cpi}
+      WHEN {% parameter category %} = 'All items less food' AND ${all_items_less_food} = 1 THEN ${cpi}
+      WHEN {% parameter category %} = 'All items less housing' AND ${all_items_less_housing} = 1 THEN ${cpi}
+      WHEN {% parameter category %} = 'All items less food and housing' AND ${all_items_less_food_housing} = 1 THEN ${cpi}
+      ELSE NULL
+    END ;;
+    value_format: "0.0"
+    label: "مؤشر أسعار المستهلك"
   }
 
   measure: previous_year_cpi_avg {
