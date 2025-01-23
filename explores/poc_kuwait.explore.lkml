@@ -18,3 +18,16 @@ explore: poc_kuwait {
   }
 
 }
+
+explore: supply_report {
+  label: "Supply Report"
+  view_label: "Supply Report"
+  from: extended_subsidized_products
+
+  join: extended_users {
+    relationship: many_to_one
+    sql_on: ${supply_report.date_month} = ${extended_users.date_month}
+      ;;
+  }
+
+}
