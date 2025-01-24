@@ -26,6 +26,12 @@ view: extended_subsidized_products {
     type: sum
     sql: ${value} ;;
     value_format: "#,##0"
-    label: "(KWD) التمويل"
+    label: "(KWD) التموين"
+  }
+
+  measure: yoy_percentage_change_avg {
+    type: average
+    sql: ${yoy_percentage_change} ;;
+    value_format: "0.00\%"
   }
 }

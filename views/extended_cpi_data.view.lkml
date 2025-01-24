@@ -106,7 +106,7 @@ view: extended_cpi_data {
   measure: annual_change_rate_prc_avg {
     type: average
     sql: ${annual_change_rate_prc} ;;
-    value_format: "0.0"
+    value_format: "0.00\%"
   }
 
   measure: annual_change_rate_prc_avg_w_parameter{
