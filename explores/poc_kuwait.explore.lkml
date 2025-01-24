@@ -30,4 +30,10 @@ explore: supply_report {
       ;;
   }
 
+  join: extended_cpi_data {
+    relationship: many_to_many
+    sql_on: ${extended_cpi_data.date_month} = ${supply_report.date_month}
+      ;;
+  }
+
 }
