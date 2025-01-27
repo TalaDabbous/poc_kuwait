@@ -36,4 +36,10 @@ explore: supply_report {
       ;;
   }
 
+  join: extended_kuwait_2024_births {
+    relationship: many_to_one
+    sql_on: ${extended_cpi_data.date_month} = ${extended_kuwait_2024_births.date_month}
+      ;;
+  }
+
 }
